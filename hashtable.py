@@ -1,5 +1,21 @@
 # HashTable class using chaining.
 
+import csv
+
+
+def load_table(filename):
+    rows = []
+    with open(filename) as csv_file:
+        csvreader = csv.reader(csv_file, delimiter=",")
+        header = next(csvreader)
+        for row in csvreader:
+            if not row == " ":
+                rows.append(row)
+        print(header)
+        print(rows)
+    return rows
+
+
 class ChainingHashTable:
     # Constructor with optional initial capacity parameter.
     # Assigns all buckets with an empty list.
@@ -51,3 +67,5 @@ class ChainingHashTable:
             if kv[0] == key:
                 bucket_list.remove([kv[0], kv[1]])
 
+packages = load_table("WGUPS Package File.csv")
+print(packages)
