@@ -20,7 +20,7 @@ class ChainingHashTable:
     # Constructor with optional initial capacity parameter.
     # Assigns all buckets with an empty list.
 
-    def __init__(self, initial_capacity=10):
+    def __init__(self, initial_capacity=40):
         # initialize the hash table with empty bucket list entries.
         self.table = []
         for i in range(initial_capacity):
@@ -29,7 +29,7 @@ class ChainingHashTable:
     # Inserts a new item into the hash table.
     def insert(self, key, item):
         # get the bucket list where this item will go.
-        bucket = hash(item) % len(self.table)
+        bucket = hash(key) % len(self.table)
         bucket_list = self.table[bucket]
 
         # Update key if it already exists
@@ -67,5 +67,3 @@ class ChainingHashTable:
             if kv[0] == key:
                 bucket_list.remove([kv[0], kv[1]])
 
-packages = load_table("WGUPS Package File.csv")
-print(packages)
